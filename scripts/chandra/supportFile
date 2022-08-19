@@ -1,0 +1,41 @@
+#include <stdio.h>
+<--DEL-->
+int main(int argc, char **argv)
+<--DEL-->
+    int c;
+    int words = 0;
+    
+    FILE *fp;
+    if (argc == 1)
+    {
+        printf("Usage: ./assignment26 <filename>\n");
+        return -1;
+<--DEL-->
+<--DEL-->
+    {
+        fp = fopen(argv[1], "r");
+        if (NULL == fp)
+<--DEL-->
+            perror("fopen");
+            return -1;
+        }
+    }
+    while ((c = fgetc(fp)) != EOF)
+    {
+        if (c == ' ' || c == '\n' || c == '\t')
+        {
+            ++words;
+             c = fgetc(fp);
+            if (c == ' ' || c == '\n' || c == '\t')
+            {
+<--DEL-->
+<--DEL-->
+            //ungetc(c,fp);
+<--DEL-->
+        }
+    }
+    fclose(fp);
+    printf("Word Count in %s === %d\n", argv[1], words);
+    return 0;
+ }
+
